@@ -33,15 +33,27 @@ module Juixe
         end
 
         def define_role_based_inflection_6(role)
-          has_many "#{role.to_s}_comments".to_sym,
-                   -> { where(role: role.to_s) },
-                   has_many_options(role)
+          if RUBY_VERSION.first >= '3'
+            has_many "#{role.to_s}_comments".to_sym,
+                     -> { where(role: role.to_s) },
+                     **has_many_options(role)
+          else
+            has_many "#{role.to_s}_comments".to_sym,
+                     -> { where(role: role.to_s) },
+                     has_many_options(role)
+          end
         end
 
         def define_role_based_inflection_7(role)
-          has_many "#{role.to_s}_comments".to_sym,
-                   -> { where(role: role.to_s) },
-                   has_many_options(role)
+          if RUBY_VERSION.first >= '3'
+            has_many "#{role.to_s}_comments".to_sym,
+                     -> { where(role: role.to_s) },
+                     **has_many_options(role)
+          else
+            has_many "#{role.to_s}_comments".to_sym,
+                     -> { where(role: role.to_s) },
+                     has_many_options(role)
+          end
         end
 
 
